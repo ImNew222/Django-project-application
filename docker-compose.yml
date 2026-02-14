@@ -1,0 +1,78 @@
+# ============================================================
+# Judge0 CE — Self-hosted code execution engine
+# Start:  docker compose up -d
+# Stop:   docker compose down
+# Logs:   docker compose logs -f judge0-server
+# ============================================================
+
+x-judge0-env: &judge0-env
+  REDIS_HOST: judge0-redis
+  REDIS_PORT: "6379"
+  POSTGRES_HOST: judge0-db
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: judge0
+  POSTGRES_USER: judge0
+  POSTGRES_PASSWORD: judge0_secret
+  RAILS_MAX_THREADS: "4"
+  RAILS_SERVER_PROCESSES: "2"
+  ENABLE_WAIT_RESULT: "true"
+  ENABLE_BATCHED_SUBMISSIONS: "true"
+
+services:
+  judge0-server:
+    image: judge0/judge0:1.13.1
+    ports:
+      - "2358:2358"
+    environment:
+      <<: *judge0-env
+    privileged: true
+    restart: unless-stopped
+    depends_on:
+      judge0-db:
+        condition: service_healthy
+      judge0-redis:
+        condition: service_healthy
+
+  judge0-worker:
+    image: judge0/judge0:1.13.1
+    command: [ "./scripts/workers" ]
+    environment:
+      <<: *judge0-env
+    privileged: true
+    restart: unless-stopped
+    depends_on:
+      judge0-db:
+        condition: service_healthy
+      judge0-redis:
+        condition: service_healthy
+
+  judge0-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: judge0
+      POSTGRES_USER: judge0
+      POSTGRES_PASSWORD: judge0_secret
+    volumes:
+      - judge0-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U judge0" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  judge0-redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - judge0-redis-data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  judge0-db-data:
+  judge0-redis-data:
