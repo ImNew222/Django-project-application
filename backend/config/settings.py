@@ -7,9 +7,14 @@ from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-a+kpzpq-ysa4)3zcn(07%9b=1)szc19v^ows-%&ix#pv$1x8e6'
+import environ
 
-DEBUG = True
+env = environ.Env()
+environ.Env.read_env(BASE_DIR / '.env')
+
+SECRET_KEY = env('SECRET_KEY')
+
+DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -134,10 +139,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Gemini AI API Key
-GEMINI_API_KEY = 'AIzaSyD83peLtrZatpYpxFX8Xm1Pef7sYYGDKAo'
+GEMINI_API_KEY = env('GEMINI_API_KEY')
 
 # OpenAI GPT API Key (fallback)
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = env('OPENAI_API_KEY')
 
 # Judge0 Code Execution API (self-hosted via Docker)
 JUDGE0_API_URL = 'http://localhost:2358'
