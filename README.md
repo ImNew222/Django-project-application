@@ -1,4 +1,4 @@
-# ScholarHub - Comprehensive Learning Management System
+# Nexora - Comprehensive Learning Management System
 
 ScholarHub is a modern, feature-rich Learning Management System (LMS) designed to enhance the educational experience for students and teachers. It combines traditional classroom management tools with gamified learning elements like quizzes, coding battles, and typing contests.
 
