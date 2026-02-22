@@ -73,10 +73,16 @@ def run_judge0(source_code, language_id, stdin=''):
         'stdin': base64.b64encode(stdin.encode()).decode(),
         'base64_encoded': True,
     }
+    headers = {'Content-Type': 'application/json'}
+    api_key = getattr(settings, 'JUDGE0_API_KEY', '')
+    if api_key:
+        headers['X-RapidAPI-Key'] = api_key
+        headers['X-RapidAPI-Host'] = getattr(settings, 'JUDGE0_API_HOST', 'judge0-ce.p.rapidapi.com')
+
     resp = requests.post(
         f'{JUDGE0_URL}/submissions?base64_encoded=true&wait=true',
         json=payload,
-        headers={'Content-Type': 'application/json'},
+        headers=headers,
         timeout=30,
     )
     if resp.status_code in (200, 201):
@@ -133,10 +139,16 @@ class SubmitCodeView(APIView):
                 'base64_encoded': True,
             }
 
+            headers = {'Content-Type': 'application/json'}
+            api_key = getattr(settings, 'JUDGE0_API_KEY', '')
+            if api_key:
+                headers['X-RapidAPI-Key'] = api_key
+                headers['X-RapidAPI-Host'] = getattr(settings, 'JUDGE0_API_HOST', 'judge0-ce.p.rapidapi.com')
+
             resp = requests.post(
                 f'{JUDGE0_URL}/submissions?base64_encoded=true&wait=true',
                 json=judge0_payload,
-                headers={'Content-Type': 'application/json'},
+                headers=headers,
                 timeout=30,
             )
 

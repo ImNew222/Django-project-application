@@ -161,3 +161,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GEMINI_API_KEY = env('GEMINI_API_KEY', default='')
 OPENAI_API_KEY = env('OPENAI_API_KEY', default='')
 JUDGE0_API_URL = env('JUDGE0_API_URL', default='http://localhost:2358')
+JUDGE0_API_KEY = env('JUDGE0_API_KEY', default='')
+JUDGE0_API_HOST = env('JUDGE0_API_HOST', default='judge0-ce.p.rapidapi.com')
