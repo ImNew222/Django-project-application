@@ -1,5 +1,4 @@
 import json
-import google.generativeai as genai
 from openai import OpenAI
 from django.conf import settings
 from rest_framework import permissions, status
@@ -48,13 +47,16 @@ def clean_json_response(raw):
 
 def try_gemini(prompt):
     """Try Gemini models (free tier first)."""
-    genai.configure(api_key=settings.GEMINI_API_KEY)
+    from google import genai
+    client = genai.Client(api_key=settings.GEMINI_API_KEY)
     models = ['gemini-2.0-flash-lite', 'gemini-1.5-flash', 'gemini-2.0-flash']
 
     for model_name in models:
         try:
-            model = genai.GenerativeModel(model_name)
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+            )
             return response.text, model_name
         except Exception:
             continue

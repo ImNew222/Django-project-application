@@ -3,6 +3,9 @@ from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta
 
+def _default_expiry():
+    return timezone.now() + timedelta(minutes=2)
+
 class BattleInvite(models.Model):
     """Direct 1v1 battle invitation between users."""
     

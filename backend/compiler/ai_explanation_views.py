@@ -6,7 +6,6 @@ uses Gemini to generate an explanation of the optimal approach,
 complexity analysis, and tips for improvement.
 """
 import json
-import google.generativeai as genai
 from django.conf import settings
 from rest_framework import permissions, status
 from rest_framework.response import Response
@@ -85,14 +84,17 @@ class GetExplanationView(APIView):
 
         # Try Gemini
         try:
-            genai.configure(api_key=settings.GEMINI_API_KEY)
+            from google import genai
+            client = genai.Client(api_key=settings.GEMINI_API_KEY)
             models_to_try = ['gemini-2.0-flash-lite', 'gemini-1.5-flash', 'gemini-2.0-flash']
             raw = None
 
             for model_name in models_to_try:
                 try:
-                    model = genai.GenerativeModel(model_name)
-                    response = model.generate_content(prompt)
+                    response = client.models.generate_content(
+                        model=model_name,
+                        contents=prompt,
+                    )
                     raw = response.text
                     break
                 except Exception:
