@@ -4,19 +4,19 @@ Django settings for Nexora project.
 
 from pathlib import Path
 from datetime import timedelta
+import os
+import environ
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-import environ
 
 env = environ.Env()
 environ.Env.read_env(BASE_DIR / '.env')
 
+# Security
 SECRET_KEY = env('SECRET_KEY')
-
 DEBUG = env.bool('DEBUG', default=False)
-
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 
 # Application definition
 INSTALLED_APPS = [
@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic', # WhiteNoise dev
     'django.contrib.staticfiles',
     # Third party
     'rest_framework',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,18 +79,29 @@ WSGI_APPLICATION = 'config.wsgi.application'
 ASGI_APPLICATION = 'config.asgi.application'
 
 # Channel Layers (WebSocket support)
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer',
-    },
-}
+if env('REDIS_URL', default=None):
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                'hosts': [env('REDIS_URL')],
+            },
+        },
+    }
+else:
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        },
+    }
 
 # Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 # Custom User Model
@@ -124,6 +137,9 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
 ]
+if env('FRONTEND_URL', default=None):
+    CORS_ALLOWED_ORIGINS.append(env('FRONTEND_URL'))
+    CSRF_TRUSTED_ORIGINS = [env('FRONTEND_URL')]
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -133,16 +149,15 @@ USE_TZ = True
 
 # Static and Media files
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Gemini AI API Key
-GEMINI_API_KEY = env('GEMINI_API_KEY')
-
-# OpenAI GPT API Key (fallback)
-OPENAI_API_KEY = env('OPENAI_API_KEY')
-
-# Judge0 Code Execution API (self-hosted via Docker)
-JUDGE0_API_URL = 'http://localhost:2358'
+# API Keys
+GEMINI_API_KEY = env('GEMINI_API_KEY', default='')
+OPENAI_API_KEY = env('OPENAI_API_KEY', default='')
+JUDGE0_API_URL = env('JUDGE0_API_URL', default='http://localhost:2358')
