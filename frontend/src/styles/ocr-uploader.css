@@ -1,0 +1,327 @@
+/* ============= OCR Score Uploader ============= */
+.ocr-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.ocr-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.ocr-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.ocr-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+.ocr-subject {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 500;
+}
+
+.ocr-header .btn-icon {
+  color: #888;
+}
+
+.ocr-body {
+  padding: 1.2rem;
+}
+
+/* Dropzone */
+.ocr-dropzone {
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.ocr-dropzone:hover,
+.ocr-dropzone.drag-over {
+  border-color: #4f46e5;
+  background: #f8f7ff;
+}
+
+.ocr-dropzone.has-image {
+  border-style: solid;
+  border-color: #ddd;
+  padding: 0.5rem;
+  cursor: default;
+}
+
+.ocr-dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #999;
+}
+
+.ocr-dropzone-content svg {
+  color: #ccc;
+}
+
+.ocr-dropzone-content p {
+  margin: 0;
+  color: #555;
+}
+
+.ocr-dropzone-content span {
+  font-size: 0.75rem;
+  color: #bbb;
+}
+
+/* Image Preview */
+.ocr-preview-wrap {
+  position: relative;
+  text-align: center;
+}
+
+.ocr-preview-img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.ocr-preview-img.processing {
+  opacity: 0.5;
+}
+
+.ocr-change-btn {
+  margin-top: 0.5rem;
+}
+
+/* Scan Button */
+.ocr-scan-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+}
+
+/* Progress */
+.ocr-processing {
+  text-align: center;
+}
+
+.ocr-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.ocr-progress span {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.ocr-progress .spin {
+  animation: spin 1s linear infinite;
+  color: #4f46e5;
+}
+
+.ocr-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ocr-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+/* Detected Scores */
+.ocr-scores-section {
+  margin-bottom: 1rem;
+}
+
+.ocr-scores-section h4 {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.ocr-scores-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ocr-score-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 60px;
+}
+
+.ocr-score-chip:hover {
+  border-color: #4f46e5;
+  background: #f8f7ff;
+}
+
+.ocr-score-chip.selected {
+  border-color: #4f46e5;
+  background: #ede9fe;
+}
+
+.ocr-score-chip.high {
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.3);
+}
+
+.ocr-score-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.ocr-score-context {
+  font-size: 0.65rem;
+  color: #999;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Confirm Section */
+.ocr-confirm-section {
+  padding-top: 0.8rem;
+  border-top: 1px solid #eee;
+}
+
+.ocr-confirm-section label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.ocr-confirm-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.ocr-confirm-input input {
+  flex: 1;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.ocr-confirm-input input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.ocr-confirm-input .btn {
+  white-space: nowrap;
+}
+
+/* No Scores */
+.ocr-no-scores {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.ocr-no-scores p {
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+/* Raw Text */
+.ocr-raw-text {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.ocr-raw-text summary {
+  cursor: pointer;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.ocr-raw-text pre {
+  background: #f5f5f5;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  max-height: 150px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+/* Grade Input with OCR trigger */
+.grade-input-with-ocr {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  position: relative;
+}
+
+.grade-input-with-ocr input {
+  flex: 1;
+  min-width: 0;
+}
+
+.ocr-trigger {
+  padding: 0.2rem;
+  color: #bbb;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.ocr-trigger:hover {
+  color: #4f46e5;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

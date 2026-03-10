@@ -1,0 +1,42 @@
+/* ============= Mobile Bottom Nav ============= */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #eee;
+  z-index: 1000;
+  justify-content: space-around;
+  padding: 0.3rem 0 env(safe-area-inset-bottom, 0.3rem);
+}
+
+.dark .bottom-nav {
+  background: #1a1a1a;
+  border-top-color: #333;
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  background: none;
+  color: #888;
+  font-size: 0.65rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.bottom-nav-item.active {
+  color: #4f46e5;
+}
+
+.dark .bottom-nav-item.active {
+  color: #818cf8;
+}
+

@@ -8,16 +8,18 @@ User = get_user_model()
 class CommentSerializer(serializers.ModelSerializer):
     author_name = serializers.CharField(source='author.username', read_only=True)
     author_role = serializers.CharField(source='author.role', read_only=True)
+    is_bot = serializers.BooleanField(source='author.is_bot', read_only=True)
 
     class Meta:
         model = Comment
-        fields = ['id', 'author_name', 'author_role', 'content', 'created_at']
+        fields = ['id', 'author_name', 'author_role', 'is_bot', 'content', 'created_at']
         read_only_fields = ['id', 'created_at']
 
 
 class PostSerializer(serializers.ModelSerializer):
     author_name = serializers.CharField(source='author.username', read_only=True)
     author_role = serializers.CharField(source='author.role', read_only=True)
+    is_bot = serializers.BooleanField(source='author.is_bot', read_only=True)
     like_count = serializers.ReadOnlyField()
     comment_count = serializers.SerializerMethodField()
     is_liked = serializers.SerializerMethodField()
@@ -26,7 +28,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
-            'id', 'author_name', 'author_role', 'content', 'image',
+            'id', 'author_name', 'author_role', 'is_bot', 'content', 'image',
             'like_count', 'comment_count', 'is_liked', 'comments',
             'created_at', 'updated_at',
         ]

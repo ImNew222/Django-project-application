@@ -1,0 +1,185 @@
+/* ===== DARK MODE ===== */
+.dark body,
+.dark {
+  background: #0f0f0f;
+  color: #e5e5e5;
+}
+
+.dark a {
+  color: #e5e5e5;
+}
+
+
+
+.dark .btn-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .theme-toggle {
+  color: #f59e0b;
+}
+
+.dark .main-content {
+  background: #0f0f0f;
+}
+
+.dark .stat-card,
+.dark .section,
+.dark .quiz-lobby-page,
+.dark .quiz-play-page,
+.dark .quiz-results-page,
+.dark .dashboard-page,
+.dark .auth-card,
+.dark .lf-create-card,
+.dark .lf-card,
+.dark .blog-post-card,
+.dark .feed-post-card,
+.dark .profile-card,
+.dark .profile-header-card {
+  background: #1a1a1a;
+  border-color: #333;
+  color: #e5e5e5;
+}
+
+.dark .typing-page,
+.dark .ai-gen-page,
+.dark .buddy-page,
+.dark .grade-page,
+.dark .teacher-page,
+.dark .messaging-page,
+.dark .lf-page,
+.dark .leaderboard-page,
+.dark .blog-page,
+.dark .social-feed-page {
+  color: #e5e5e5;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #e5e5e5;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #777;
+}
+
+.dark .data-table th {
+  background: #222;
+  border-color: #444;
+  color: #ccc;
+}
+
+.dark .data-table td {
+  border-color: #333;
+  color: #ddd;
+}
+
+.dark .data-table tr:hover {
+  background: #222;
+}
+
+.dark .filter-btn,
+.dark .difficulty-btn,
+.dark .tab-btn {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #ccc;
+}
+
+.dark .filter-btn:hover,
+.dark .filter-btn.active,
+.dark .difficulty-btn.selected,
+.dark .tab-btn.active {
+  background: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+.dark .btn-secondary {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #e5e5e5;
+}
+
+.dark .btn-secondary:hover {
+  background: #333;
+}
+
+.dark .btn-primary {
+  background: #fff;
+  color: #000;
+}
+
+.dark .btn-primary:hover {
+  background: #e5e5e5;
+}
+
+.dark .error-msg {
+  background: #3b1515;
+  color: #f87171;
+  border-color: #7f1d1d;
+}
+
+.dark .result-header.pass {
+  background: linear-gradient(135deg, #14532d, #166534);
+}
+
+.dark .result-header.fail {
+  background: linear-gradient(135deg, #7f1d1d, #991b1b);
+}
+
+.dark .typing-text-display {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.dark .typing-input {
+  background: #1a1a1a;
+  border-color: #333;
+  color: #e5e5e5;
+}
+
+.dark .typing-stats-bar {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.dark .sidebar,
+.dark .convo-item,
+.dark .chat-header {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.dark .convo-item:hover,
+.dark .convo-item.active {
+  background: #2a2a2a;
+}
+
+.dark .msg-bubble.mine {
+  background: #333;
+  color: #e5e5e5;
+}
+
+.dark .msg-bubble.theirs {
+  background: #222;
+  color: #ddd;
+}
+
+.dark .empty-state {
+  color: #888;
+}
+
+.dark .btn-logout {
+  color: #f87171;
+}
+
+.dark .welcome-section h1,
+.dark .welcome-section p {
+  color: #e5e5e5;
+}
+

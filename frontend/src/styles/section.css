@@ -1,0 +1,43 @@
+/* ===========================
+   SECTION
+   =========================== */
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* ===========================
+   DATA TABLE
+   =========================== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+  background: #fafafa;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.data-table tbody tr:hover {
+  background: #f9f9f9;
+}
+

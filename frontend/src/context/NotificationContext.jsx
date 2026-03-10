@@ -57,7 +57,8 @@ export function NotificationProvider({ children }) {
             if (!token) return;
 
             const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-            const wsUrl = `${protocol}://localhost:8000/ws/notifications/?token=${token}`;
+            const wsHost = import.meta.env.VITE_WS_URL || 'localhost:8000';
+            const wsUrl = `${protocol}://${wsHost}/ws/notifications/?token=${token}`;
 
             const ws = new WebSocket(wsUrl);
             wsRef.current = ws;

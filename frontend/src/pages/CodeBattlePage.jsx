@@ -23,7 +23,8 @@ const DIFF_CONFIG = {
 
 function getWsUrl() {
     const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    return `${proto}://localhost:8000/ws/battle/`;
+    const host = import.meta.env.VITE_WS_URL || 'localhost:8000';
+    return `${proto}://${host}/ws/battle/`;
 }
 
 export default function CodeBattlePage() {

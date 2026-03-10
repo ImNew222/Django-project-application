@@ -1,0 +1,94 @@
+/* ===========================
+   TYPING CONTEST
+   =========================== */
+.typing-page h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.typing-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.typing-stat {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.typing-stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.typing-stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.typing-progress {
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.typing-progress-bar {
+  height: 100%;
+  background: #1a1a1a;
+  transition: width 0.3s;
+  border-radius: 3px;
+}
+
+.typing-text-display {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  font-family: 'Courier New', monospace;
+}
+
+.char-pending {
+  color: #aaa;
+}
+
+.char-correct {
+  color: #0a0;
+  background: #e6ffe6;
+}
+
+.char-wrong {
+  color: #c00;
+  background: #ffe6e6;
+  text-decoration: underline;
+}
+
+.typing-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-family: 'Courier New', monospace;
+  resize: none;
+  min-height: 80px;
+}
+
+.typing-input:focus {
+  outline: none;
+  border-color: #333;
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+}
+

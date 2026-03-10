@@ -1,0 +1,116 @@
+/* ============= Difficulty Dots (replacing emoji circles) ============= */
+.diff-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.diff-dot.beginner {
+  background: #22c55e;
+}
+
+.diff-dot.intermediate {
+  background: #eab308;
+}
+
+.diff-dot.hard {
+  background: #ef4444;
+}
+
+/* ============= Spin animation for loading icons ============= */
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============= Icon alignment helpers ============= */
+h1>svg,
+h2>svg,
+h3>svg,
+label>svg,
+button>svg,
+a>svg,
+span>svg,
+p>svg,
+td>svg,
+.stat-icon>svg,
+.stat-label>svg,
+.stat-value>svg,
+.action-icon>svg,
+.action-btn>svg {
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+}
+
+.btn svg,
+.action-btn svg,
+.filter-btn svg,
+.tab-btn svg,
+.type-btn svg {
+  margin-right: 0.3em;
+  vertical-align: -0.15em;
+}
+
+.result-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lf-details span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ============= Page Transition ============= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ============= Dark Mode / Theme Toggle ============= */
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  transition: background 0.2s;
+}
+
+.btn-icon:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.theme-toggle {
+  color: #555;
+}
+
+
+

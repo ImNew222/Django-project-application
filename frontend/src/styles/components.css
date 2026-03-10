@@ -1,0 +1,41 @@
+/* ===========================
+   ERROR MESSAGE
+   =========================== */
+.error-msg {
+  background: #fee;
+  color: #c00;
+  border: 1px solid #fcc;
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  white-space: pre-line;
+}
+
+/* ===========================
+   BADGES
+   =========================== */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-beginner {
+  background: #e6ffe6;
+  color: #060;
+}
+
+.badge-intermediate {
+  background: #fff9e6;
+  color: #960;
+}
+
+.badge-hard {
+  background: #ffe6e6;
+  color: #c00;
+}
+

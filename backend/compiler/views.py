@@ -1374,3 +1374,74 @@ class TowerDefenseLeaderboardView(APIView):
                 for s in top_scores
             ]
         })
+
+
+# ============================================================
+# Chess-Style PvP (REST endpoints)
+# ============================================================
+
+class ChessBattleHistoryView(APIView):
+    """User's past chess battle history."""
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        from .models import ChessBattle
+        battles = ChessBattle.objects.filter(
+            models.Q(player1=request.user) | models.Q(player2=request.user),
+            status='finished'
+        ).select_related('player1', 'player2', 'winner', 'challenge').order_by('-finished_at')[:20]
+
+        data = []
+        for b in battles:
+            data.append({
+                'id': b.id,
+                'room_code': b.room_code,
+                'challenge_title': b.challenge.title if b.challenge else 'Unknown',
+                'player1': b.player1.username,
+                'player2': b.player2.username if b.player2 else 'N/A',
+                'winner': b.winner.username if b.winner else 'Draw',
+                'move_count': b.move_count,
+                'difficulty': b.difficulty,
+                'points_awarded': b.points_awarded,
+                'finished_at': b.finished_at.isoformat() if b.finished_at else None,
+            })
+        return Response(data)
+
+
+class ChessBattleReplayView(APIView):
+    """GET: full move-by-move replay of a chess battle."""
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, battle_id):
+        from .models import ChessBattle, ChessMove
+        try:
+            battle = ChessBattle.objects.select_related(
+                'player1', 'player2', 'winner', 'challenge'
+            ).get(id=battle_id)
+        except ChessBattle.DoesNotExist:
+            return Response({'error': 'Battle not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        if request.user not in (battle.player1, battle.player2):
+            return Response({'error': 'Not a participant'}, status=status.HTTP_403_FORBIDDEN)
+
+        moves = ChessMove.objects.filter(battle=battle).select_related('player').order_by('move_number')
+
+        return Response({
+            'battle': {
+                'id': battle.id,
+                'challenge_title': battle.challenge.title if battle.challenge else None,
+                'player1': battle.player1.username,
+                'player2': battle.player2.username if battle.player2 else None,
+                'winner': battle.winner.username if battle.winner else None,
+                'move_count': battle.move_count,
+                'shared_code': battle.shared_code,
+                'difficulty': battle.difficulty,
+            },
+            'moves': [{
+                'move_number': m.move_number,
+                'player': m.player.username,
+                'line_content': m.line_content,
+                'time_spent': round(m.time_spent, 1),
+                'timestamp': m.timestamp.isoformat(),
+            } for m in moves],
+        })

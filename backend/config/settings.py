@@ -141,6 +141,14 @@ if env('FRONTEND_URL', default=None):
     CORS_ALLOWED_ORIGINS.append(env('FRONTEND_URL'))
     CSRF_TRUSTED_ORIGINS = [env('FRONTEND_URL')]
 
+# Railway auto-config
+RAILWAY_DOMAIN = env('RAILWAY_PUBLIC_DOMAIN', default=None)
+if RAILWAY_DOMAIN:
+    ALLOWED_HOSTS.append(RAILWAY_DOMAIN)
+    CORS_ALLOWED_ORIGINS.append(f'https://{RAILWAY_DOMAIN}')
+    CSRF_TRUSTED_ORIGINS = CSRF_TRUSTED_ORIGINS if 'CSRF_TRUSTED_ORIGINS' in dir() else []
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_DOMAIN}')
+
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Manila'
@@ -159,7 +167,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # API Keys
 GEMINI_API_KEY = env('GEMINI_API_KEY', default='')
+GROQ_API_KEY = env('GROQ_API_KEY', default='')
 OPENAI_API_KEY = env('OPENAI_API_KEY', default='')
 JUDGE0_API_URL = env('JUDGE0_API_URL', default='http://localhost:2358')
 JUDGE0_API_KEY = env('JUDGE0_API_KEY', default='')
 JUDGE0_API_HOST = env('JUDGE0_API_HOST', default='judge0-ce.p.rapidapi.com')
+UNSPLASH_ACCESS_KEY = env('UNSPLASH_ACCESS_KEY', default='')

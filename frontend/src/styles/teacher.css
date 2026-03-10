@@ -1,0 +1,155 @@
+/* ===========================
+   TEACHER DASHBOARD
+   =========================== */
+.teacher-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.teacher-stat-card {
+  background: white;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.teacher-stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.teacher-stat-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+.teacher-section {
+  background: white;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.teacher-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.teacher-section-header h2 {
+  margin: 0;
+}
+
+.teacher-search {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  width: 250px;
+}
+
+.teacher-table-wrap {
+  overflow-x: auto;
+}
+
+.teacher-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.teacher-table th,
+.teacher-table td {
+  padding: 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.teacher-table th {
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.teacher-name-sub {
+  color: #999;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.rank-badge {
+  background: #1a1a1a;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.teacher-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.teacher-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.teacher-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.teacher-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.teacher-detail-section {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.teacher-detail-section h3 {
+  margin-bottom: 0.5rem;
+}
+
+.teacher-detail-section p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+.locked-msg {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+}
+

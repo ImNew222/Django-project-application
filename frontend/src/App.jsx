@@ -30,6 +30,7 @@ import FriendsPage from './pages/FriendsPage';
 import SpectatorView from './pages/SpectatorView';
 import SectionPage from './pages/SectionPage';
 import TowerDefensePage from './game/TowerDefensePage';
+import ChessBattlePage from './pages/ChessBattlePage';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated, loading } = useAuth();
@@ -92,6 +93,7 @@ function AnimatedRoutes() {
         <Route path="/spectate/:tournamentId" element={<ProtectedRoute><SpectatorView /></ProtectedRoute>} />
         <Route path="/section/:sectionId" element={<ProtectedRoute><SectionPage /></ProtectedRoute>} />
         <Route path="/tower-defense" element={<ProtectedRoute><TowerDefensePage /></ProtectedRoute>} />
+        <Route path="/chess-battle" element={<ProtectedRoute><ChessBattlePage /></ProtectedRoute>} />
 
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" />} />

@@ -54,7 +54,7 @@ export default function SectionPage() {
     const connectChat = () => {
         const token = localStorage.getItem('access_token');
         const wsProto = window.location.protocol === 'https:' ? 'wss' : 'ws';
-        const wsHost = 'localhost:8000';
+        const wsHost = import.meta.env.VITE_WS_URL || 'localhost:8000';
         const ws = new WebSocket(`${wsProto}://${wsHost}/ws/section-chat/${sectionId}/?token=${token}`);
 
         ws.onopen = () => setWsConnected(true);

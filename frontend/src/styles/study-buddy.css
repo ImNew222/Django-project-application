@@ -1,0 +1,188 @@
+/* ===========================
+   STUDY BUDDY
+   =========================== */
+.buddy-profile-card {
+  background: white;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.buddy-profile-card h3 {
+  margin-bottom: 0.8rem;
+}
+
+.buddy-profile-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.buddy-status {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.buddy-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  padding: 0.6rem 1.5rem;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab-btn.active {
+  background: #1a1a1a;
+  color: white;
+}
+
+.buddy-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.filter-btn.active {
+  background: #1a1a1a;
+  color: white;
+  border-color: #1a1a1a;
+}
+
+.buddy-search-input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.buddy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.buddy-card {
+  background: white;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.buddy-card-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.buddy-card-info {
+  width: 100%;
+}
+
+.buddy-card-info h3 {
+  margin: 0.3rem 0;
+}
+
+.buddy-gender {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.buddy-interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.interest-tag {
+  background: #e8f4e8;
+  color: #060;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.buddy-bio {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.3rem 0;
+}
+
+.buddy-requests h2 {
+  margin-bottom: 1rem;
+}
+
+.buddy-request-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.buddy-request-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buddy-status-badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.buddy-status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.buddy-status-badge.accepted {
+  background: #d4edda;
+  color: #155724;
+}
+
+.buddy-status-badge.declined {
+  background: #f8d7da;
+  color: #721c24;
+}
+

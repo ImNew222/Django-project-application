@@ -99,6 +99,7 @@ export default function Navbar() {
                 { to: '/quiz', label: 'Quiz', icon: Swords },
                 { to: '/typing', label: 'Typing', icon: Keyboard },
                 { to: '/battle', label: 'Battle', icon: Swords },
+                { to: '/chess-battle', label: 'Chess', icon: Trophy },
                 { to: '/tower-defense', label: 'TD Game', icon: Swords },
                 { to: '/tournament', label: 'Tourney', icon: Trophy },
                 { to: '/daily', label: 'Daily', icon: Calendar },

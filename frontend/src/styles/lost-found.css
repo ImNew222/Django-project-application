@@ -1,0 +1,193 @@
+/* ===========================
+   LOST & FOUND
+   =========================== */
+.lf-page h1 {
+  font-size: 2rem;
+}
+
+.lf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.lf-create-card {
+  background: white;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.lf-create-card h2 {
+  margin-bottom: 1rem;
+}
+
+.lf-type-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.type-btn {
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.type-btn:hover {
+  border-color: #1a1a1a;
+}
+
+.type-btn.active.lost {
+  background: #ffe6e6;
+  border-color: #c00;
+  color: #c00;
+}
+
+.type-btn.active.found {
+  background: #e6ffe6;
+  border-color: #0a0;
+  color: #060;
+}
+
+.lf-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.filter-btn.active {
+  background: #1a1a1a;
+  color: white;
+  border-color: #1a1a1a;
+}
+
+.filter-select {
+  padding: 0.4rem 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.lf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.lf-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.2rem;
+  border-left: 4px solid #ddd;
+}
+
+.lf-card.lost {
+  border-left-color: #c00;
+}
+
+.lf-card.found {
+  border-left-color: #0a0;
+}
+
+.lf-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.lf-type-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.lf-type-badge.lost {
+  background: #ffe6e6;
+  color: #c00;
+}
+
+.lf-type-badge.found {
+  background: #e6ffe6;
+  color: #060;
+}
+
+.lf-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.lf-status.open {
+  background: #fff9e6;
+  color: #960;
+}
+
+.lf-status.claimed {
+  background: #e6f3ff;
+  color: #06c;
+}
+
+.lf-status.resolved {
+  background: #e6ffe6;
+  color: #060;
+}
+
+.lf-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.lf-description {
+  color: #444;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.lf-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.lf-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #eee;
+}
+

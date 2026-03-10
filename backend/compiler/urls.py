@@ -68,5 +68,9 @@ urlpatterns = [
     # Phase 12 — Tower Defense
     path('tower-defense/submit/', views.TowerDefenseSubmitView.as_view(), name='td-submit'),
     path('tower-defense/leaderboard/', views.TowerDefenseLeaderboardView.as_view(), name='td-leaderboard'),
+
+    # Chess-Style PvP
+    path('chess-battle/history/', views.ChessBattleHistoryView.as_view(), name='chess-history'),
+    path('chess-battle/<int:battle_id>/replay/', views.ChessBattleReplayView.as_view(), name='chess-replay'),
 ]
 

@@ -112,6 +112,13 @@ export default function BlogPage() {
                 <div className="blog-list">
                     {posts.map((post) => (
                         <div key={post.id} className="blog-card">
+                            {post.cover_image && (
+                                <img
+                                    src={post.cover_image.startsWith('http') ? post.cover_image : `${import.meta.env.VITE_MEDIA_URL || 'http://localhost:8000'}${post.cover_image}`}
+                                    alt={post.title}
+                                    className="blog-cover-image"
+                                />
+                            )}
                             <div className="blog-card-header">
                                 <h2
                                     className="blog-title"
@@ -122,6 +129,7 @@ export default function BlogPage() {
                                 </h2>
                                 <div className="blog-meta">
                                     <span className="blog-author">By {post.author_name}</span>
+                                    {post.is_bot && <span className="bot-badge" title="AI Bot">🤖</span>}
                                     <span className={`author-role role-${post.author_role}`}>{post.author_role}</span>
                                     <span className="blog-date">{formatDate(post.created_at)}</span>
                                 </div>

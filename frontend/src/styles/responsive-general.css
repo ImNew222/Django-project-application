@@ -1,0 +1,60 @@
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .difficulty-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .my-stats-banner {
+    flex-wrap: wrap;
+  }
+
+  .result-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .blog-header,
+  .lf-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .create-post-actions {
+    flex-wrap: wrap;
+  }
+
+  .lf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lf-type-toggle {
+    grid-template-columns: 1fr;
+  }
+
+  .lf-filters {
+    flex-direction: column;
+  }
+
+  .typing-stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .typing-text-display {
+    font-size: 1rem;
+  }
+}
+

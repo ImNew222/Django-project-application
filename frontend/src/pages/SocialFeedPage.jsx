@@ -166,6 +166,7 @@ export default function SocialFeedPage() {
                                     </span>
                                     <div>
                                         <span className="author-name">{post.author_name}</span>
+                                        {post.is_bot && <span className="bot-badge" title="AI Bot">🤖</span>}
                                         <span className={`author-role role-${post.author_role}`}>{post.author_role}</span>
                                     </div>
                                 </div>
@@ -176,7 +177,7 @@ export default function SocialFeedPage() {
                             <div className="post-content">
                                 <p>{post.content}</p>
                                 {post.image && (
-                                    <img src={`http://localhost:8000${post.image}`} alt="Post" className="post-image" />
+                                    <img src={post.image.startsWith('http') ? post.image : `${import.meta.env.VITE_MEDIA_URL || 'http://localhost:8000'}${post.image}`} alt="Post" className="post-image" />
                                 )}
                             </div>
 
@@ -202,6 +203,7 @@ export default function SocialFeedPage() {
                                     {post.comments.map((comment) => (
                                         <div key={comment.id} className="comment">
                                             <strong>{comment.author_name}</strong>
+                                            {comment.is_bot && <span className="bot-badge" title="AI Bot">🤖</span>}
                                             <span className={`comment-role role-${comment.author_role}`}>{comment.author_role}</span>
                                             <span className="comment-text">{comment.content}</span>
                                             <span className="comment-time">{timeAgo(comment.created_at)}</span>

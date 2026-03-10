@@ -1,0 +1,174 @@
+/* ============= Settings Page ============= */
+.settings-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.settings-page h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.settings-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.dark .settings-card {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.settings-card h2 {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.dark .settings-card h2 {
+  border-bottom-color: #333;
+}
+
+.settings-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.dark .settings-info-row {
+  border-bottom-color: #2a2a2a;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.dark .form-field label {
+  color: #aaa;
+}
+
+.form-field input {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.input-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+.input-with-icon input {
+  flex: 1;
+  padding-right: 2.5rem;
+}
+
+.input-with-icon .btn-icon {
+  position: absolute;
+  right: 0.3rem;
+}
+
+.danger-zone {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+.dark .danger-zone {
+  border-color: #7f1d1d;
+  background: #1f1010;
+}
+
+.danger-zone h2 {
+  color: #dc2626;
+}
+
+.danger-zone p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+.btn-danger:disabled {
+  opacity: 0.5;
+}
+
+.delete-confirm {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  background: #fff5f5;
+}
+
+.dark .delete-confirm {
+  background: #1a0a0a;
+  border-color: #7f1d1d;
+}
+
+.delete-confirm input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.delete-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+

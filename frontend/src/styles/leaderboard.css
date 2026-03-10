@@ -1,0 +1,84 @@
+/* ===========================
+   LEADERBOARD
+   =========================== */
+.leaderboard-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.my-stats-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #1a1a1a;
+  color: white;
+  padding: 1.2rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.my-rank {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.my-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.my-title {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.my-points {
+  margin-left: auto;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.my-streak {
+  font-size: 1.2rem;
+}
+
+.highlight-row {
+  background: #f0f8ff !important;
+  font-weight: 600;
+}
+
+.top-three td {
+  font-weight: 600;
+}
+
+.rank-cell {
+  font-size: 1.2rem;
+  min-width: 50px;
+}
+
+.rank-badge {
+  background: #f0f0f0;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.points-cell {
+  font-weight: 700;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  color: #666;
+}
+

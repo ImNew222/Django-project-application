@@ -1,0 +1,661 @@
+/* ============= Profile Page ============= */
+.profile-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.profile-header-card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.profile-header-info {
+  flex: 1;
+}
+
+.profile-header-info h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.profile-username {
+  color: #666;
+  font-size: 0.9rem;
+  margin-right: 0.8rem;
+}
+
+.profile-role {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.role-student {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.role-teacher {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.role-admin {
+  background: #fef3c7;
+  color: #a16207;
+}
+
+.dark .role-student {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+.dark .role-teacher {
+  background: #14532d;
+  color: #86efac;
+}
+
+.dark .role-admin {
+  background: #422006;
+  color: #fcd34d;
+}
+
+.profile-edit-btn {
+  margin-left: auto;
+}
+
+.profile-edit-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.profile-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.profile-card h2 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.6rem;
+}
+
+.dark .profile-card h2 {
+  color: #ccc;
+  border-bottom-color: #333;
+}
+
+.profile-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.profile-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.profile-field label {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.profile-field span {
+  font-size: 0.95rem;
+}
+
+.profile-field input,
+.profile-field select,
+.profile-field textarea {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  width: 100%;
+}
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.profile-tag {
+  background: #f0f0f0;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  color: #444;
+}
+
+.dark .profile-tag {
+  background: #2a2a2a;
+  color: #ccc;
+}
+
+.muted {
+  color: #999;
+  font-style: italic;
+}
+
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  color: #666;
+}
+
+.toggle-btn.active {
+  background: #dcfce7;
+  border-color: #22c55e;
+  color: #15803d;
+}
+
+.dark .toggle-btn {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #999;
+}
+
+.dark .toggle-btn.active {
+  background: #14532d;
+  border-color: #22c55e;
+  color: #86efac;
+}
+
+.pairing-status {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.pairing-status.available {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.rank-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-header-card {
+    padding: 1rem;
+  }
+
+  .profile-edit-btn,
+  .profile-edit-actions {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  .profile-edit-actions {
+    justify-content: stretch;
+  }
+
+  .profile-edit-actions .btn {
+    flex: 1;
+  }
+}
+
+/* ── Profile Stats Grid ────────────────────────────────────── */
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-stat-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 1rem 0.7rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.profile-stat-card.elo::before {
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+}
+
+.profile-stat-card.battles::before {
+  background: linear-gradient(90deg, #ef4444, #f97316);
+}
+
+.profile-stat-card.tournaments::before {
+  background: linear-gradient(90deg, #f59e0b, #eab308);
+}
+
+.profile-stat-card.streak::before {
+  background: linear-gradient(90deg, #f97316, #ef4444);
+}
+
+.profile-stat-card.problems::before {
+  background: linear-gradient(90deg, #22c55e, #14b8a6);
+}
+
+.profile-stat-card.submissions::before {
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+}
+
+.psc-icon {
+  color: #888;
+  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.psc-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.psc-value .psc-sub {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #999;
+}
+
+.psc-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.dark .profile-stat-card {
+  background: #1a1a2e;
+  border-color: #2a2a3e;
+}
+
+.dark .psc-value {
+  color: #fff;
+}
+
+.dark .psc-icon {
+  color: #aaa;
+}
+
+/* ── Profile Badges Row ────────────────────────────────────── */
+.profile-badges-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.profile-elo-badge,
+.profile-rank-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 20px;
+}
+
+.profile-elo-badge {
+  background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+  color: #6d28d9;
+}
+
+.profile-rank-badge {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #92400e;
+}
+
+.dark .profile-elo-badge {
+  background: #2e1065;
+  color: #c4b5fd;
+}
+
+.dark .profile-rank-badge {
+  background: #422006;
+  color: #fcd34d;
+}
+
+.profile-join-date {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.3rem;
+}
+
+/* ── Activity Heatmap ──────────────────────────────────────── */
+.heatmap-card {
+  margin-bottom: 1.5rem;
+}
+
+.heatmap-subtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.heatmap-container {
+  overflow-x: auto;
+}
+
+.heatmap-scroll {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.heatmap-day-labels-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 18px;
+}
+
+.heatmap-day-labels-side span {
+  display: block;
+  height: 12px;
+  line-height: 12px;
+  font-size: 0.55rem;
+  color: #888;
+  text-align: right;
+  padding-right: 0.3rem;
+  margin-bottom: 2px;
+}
+
+.heatmap-grid {
+  display: flex;
+  gap: 2px;
+  position: relative;
+}
+
+.heatmap-month-row {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  display: flex;
+  width: 100%;
+}
+
+.heatmap-month-row span {
+  font-size: 0.6rem;
+  color: #888;
+  position: absolute;
+}
+
+.heatmap-months {
+  display: none;
+}
+
+.heatmap-week {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.heatmap-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  transition: all 0.1s;
+}
+
+.heatmap-cell:hover {
+  outline: 1px solid #888;
+  outline-offset: -1px;
+}
+
+.heatmap-cell.level-empty {
+  background: transparent;
+}
+
+.heatmap-cell.level-0 {
+  background: #ebedf0;
+}
+
+.heatmap-cell.level-1 {
+  background: #9be9a8;
+}
+
+.heatmap-cell.level-2 {
+  background: #40c463;
+}
+
+.heatmap-cell.level-3 {
+  background: #30a14e;
+}
+
+.heatmap-cell.level-4 {
+  background: #216e39;
+}
+
+.dark .heatmap-cell.level-0 {
+  background: #161b22;
+}
+
+.dark .heatmap-cell.level-1 {
+  background: #0e4429;
+}
+
+.dark .heatmap-cell.level-2 {
+  background: #006d32;
+}
+
+.dark .heatmap-cell.level-3 {
+  background: #26a641;
+}
+
+.dark .heatmap-cell.level-4 {
+  background: #39d353;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+  margin-top: 0.6rem;
+  font-size: 0.65rem;
+  color: #888;
+}
+
+.heatmap-legend .heatmap-cell {
+  width: 10px;
+  height: 10px;
+  cursor: default;
+}
+
+.heatmap-legend .heatmap-cell:hover {
+  outline: none;
+}
+
+/* ── Match History Table ───────────────────────────────────── */
+.history-card {
+  margin-top: 1.5rem;
+}
+
+.match-history-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mht-header {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px 80px;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+  border-bottom: 2px solid #eee;
+}
+
+.dark .mht-header {
+  border-bottom-color: #333;
+}
+
+.mht-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px 80px;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: center;
+  transition: background 0.15s;
+}
+
+.mht-row:hover {
+  background: #f8fafc;
+}
+
+.dark .mht-row {
+  border-bottom-color: #222;
+}
+
+.dark .mht-row:hover {
+  background: #1e1e30;
+}
+
+.mht-type {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.mht-challenge {
+  font-weight: 500;
+}
+
+.mht-challenge small {
+  color: #888;
+  font-weight: 400;
+  margin-left: 0.3rem;
+}
+
+.mht-result {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.mht-result.won {
+  color: #16a34a;
+}
+
+.mht-result.lost {
+  color: #dc2626;
+}
+
+.mht-date {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .profile-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .mht-header,
+  .mht-row {
+    grid-template-columns: 90px 1fr 90px 60px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

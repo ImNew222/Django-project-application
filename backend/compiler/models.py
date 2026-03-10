@@ -600,3 +600,96 @@ class TowerDefenseScore(models.Model):
 
     def __str__(self):
         return f"{self.user.username}: {self.score}pts (Wave {self.waves_survived})"
+
+
+# ============================================================
+# Chess-Style Code Battle
+# ============================================================
+
+class ChessBattle(models.Model):
+    """
+    Turn-based 1v1 code battle — players alternate writing one line
+    of code at a time on a shared editor, like chess.
+    """
+
+    STATUS_CHOICES = [
+        ('waiting', 'Waiting for opponent'),
+        ('countdown', 'Countdown'),
+        ('in_progress', 'In Progress'),
+        ('finished', 'Finished'),
+    ]
+
+    room_code = models.CharField(max_length=50, unique=True)
+    challenge = models.ForeignKey(
+        CodeChallenge, on_delete=models.CASCADE,
+        related_name='chess_battles', null=True, blank=True
+    )
+
+    player1 = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='chess_as_p1'
+    )
+    player2 = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        related_name='chess_as_p2', null=True, blank=True
+    )
+    winner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
+        related_name='chess_wins', null=True, blank=True
+    )
+
+    status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='waiting')
+
+    # Turn management
+    current_turn = models.IntegerField(default=1, help_text="1 or 2 — whose turn")
+    move_count = models.IntegerField(default=0)
+
+    # Chess clocks (seconds remaining for each player)
+    initial_time = models.FloatField(default=300.0, help_text="Starting time per player in seconds")
+    p1_time_remaining = models.FloatField(default=300.0)
+    p2_time_remaining = models.FloatField(default=300.0)
+    turn_started_at = models.DateTimeField(null=True, blank=True)
+
+    # Shared code — both players build this together
+    shared_code = models.TextField(blank=True, default='')
+
+    # Test pass tracking
+    p1_lines_written = models.IntegerField(default=0)
+    p2_lines_written = models.IntegerField(default=0)
+    tests_passed = models.IntegerField(default=0)
+    total_tests = models.IntegerField(default=0)
+
+    difficulty = models.CharField(max_length=10, default='easy')
+    points_awarded = models.IntegerField(default=0)
+
+    started_at = models.DateTimeField(null=True, blank=True)
+    finished_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        p2 = self.player2.username if self.player2 else '???'
+        return f"Chess: {self.player1.username} vs {p2} [{self.status}]"
+
+
+class ChessMove(models.Model):
+    """A single line of code written by a player in a chess battle."""
+
+    battle = models.ForeignKey(
+        ChessBattle, on_delete=models.CASCADE, related_name='moves'
+    )
+    player = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='chess_moves'
+    )
+    move_number = models.IntegerField()
+    line_content = models.TextField()
+    time_spent = models.FloatField(default=0.0, help_text="Seconds spent on this move")
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['move_number']
+
+    def __str__(self):
+        return f"Move #{self.move_number} by {self.player.username}: {self.line_content[:40]}"
+
